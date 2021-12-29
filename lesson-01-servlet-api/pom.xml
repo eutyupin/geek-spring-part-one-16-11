@@ -39,10 +39,6 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-<!--                    <url>http://80.78.254.253:8080/manager/text</url>-->
-                    <url>http://localhost:8080/manager/text</url>
-                    <username>admin</username>
-                    <password>singularity_100251793125</password>
                     <path>/servlet-app</path>
                 </configuration>
             </plugin>
