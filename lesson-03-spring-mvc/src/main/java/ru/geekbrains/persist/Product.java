@@ -8,10 +8,8 @@ public class Product {
 
     private String name;
 
-    // TODO
     private String description;
 
-    // TODO
     private BigDecimal price;
 
     public Product() {
@@ -36,5 +34,21 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 }
