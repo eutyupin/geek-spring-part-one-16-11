@@ -24,6 +24,6 @@ public class Config {
     @Bean
     @Scope("prototype")
     public CartService cartService() {
-        return new CartService();
+        return new CartService(productRepository());
     }
 }
