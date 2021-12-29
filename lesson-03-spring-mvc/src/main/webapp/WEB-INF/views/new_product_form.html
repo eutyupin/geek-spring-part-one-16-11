@@ -26,7 +26,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">List</a>
+                <a class="nav-link" href=th:object="${product}">List</a>
             </li>
         </ul>
     </div>
@@ -36,8 +36,9 @@
     <div class="row py-2">
         <div class="col-12">
             <form th:action="@{/product}" method="post" th:object="${product}">
-                <input type="hidden" id="id" name="id" th:field="*{id}">
                 <div class="form-group">
+                <label>ID</label>
+                    <input th:field="*{id}" type="text" class="form-control" id="id" name="id" placeholder="Enter product id">
                     <label>Name</label>
                     <input th:field="*{name}" type="text" class="form-control" id="name" name="productname" placeholder="Enter product name">
                 </div>
