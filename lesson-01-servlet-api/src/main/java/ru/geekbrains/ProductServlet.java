@@ -41,7 +41,7 @@ public class ProductServlet extends HttpServlet {
             for (Product product : productRepository.findAll()) {
                 wr.println("<tr>");
                 wr.println("<td>" + product.getId() + "</td>");
-                wr.println("<td>" + "<a href='product?id=" + product.getId().toString() +"'>"
+                wr.println("<td>" + "<a href='" + getServletContext().getContextPath() + "/product?id=" + product.getId().toString() +"'>"
                         + product.getName() + "</a>" + "</td>");
                 wr.println("</tr>");
             }
