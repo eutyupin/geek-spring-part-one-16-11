@@ -1,7 +1,5 @@
 package ru.geekbrains.persist;
 
-import org.springframework.lang.NonNull;
-
 import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 
