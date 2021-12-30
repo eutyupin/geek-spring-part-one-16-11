@@ -19,9 +19,9 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @PostConstruct
     public void init() {
-        this.save(new Product(null, "Product 1"));
-        this.save(new Product(null, "Product 2"));
-        this.save(new Product(null, "Product 3"));
+        for (int i = 1; i <= 5; i++) {
+            this.save(new Product(null, "Product " + i));
+        }
     }
 
     @Override
