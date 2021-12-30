@@ -16,7 +16,6 @@ import javax.validation.Valid;
 public class ProductController {
 
     private final ProductRepository productRepository;
-    private String currentPath;
 
     @Autowired
     public ProductController(ProductRepository productRepository) {
@@ -33,21 +32,19 @@ public class ProductController {
     public String edit(@PathVariable("id") Long id, Model model) {
         model.addAttribute("product", productRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Product not found")));
-        currentPath = "product_form";
-        return currentPath;
+        return "product_form";
     }
 
     @GetMapping("/new")
-    public String create(Product product, Model model) {
-        model.addAttribute("product", product);
-        currentPath = "new_product_form";
-        return currentPath;
+    public String create(Model model) {
+        model.addAttribute("product", new Product());
+        return "product_form";
     }
 
     @PostMapping
     public String save(@Valid Product product, BindingResult result) {
         if (result.hasErrors()) {
-            return currentPath;
+            return "product_form";
         }
         productRepository.save(product);
         return "redirect:/product";
