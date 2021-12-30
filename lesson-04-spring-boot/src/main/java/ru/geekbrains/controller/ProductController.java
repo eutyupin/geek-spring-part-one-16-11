@@ -4,15 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.persist.Product;
 import ru.geekbrains.persist.ProductRepository;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/product")
 public class ProductController {
 
     private final ProductRepository productRepository;
+    private String currentPath;
 
     @Autowired
     public ProductController(ProductRepository productRepository) {
@@ -29,17 +33,22 @@ public class ProductController {
     public String edit(@PathVariable("id") Long id, Model model) {
         model.addAttribute("product", productRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Product not found")));
-        return "product_form";
+        currentPath = "product_form";
+        return currentPath;
     }
 
     @GetMapping("/new")
     public String create(Product product, Model model) {
         model.addAttribute("product", product);
-        return "new_product_form";
+        currentPath = "new_product_form";
+        return currentPath;
     }
 
     @PostMapping
-    public String save(Product product) {
+    public String save(@Valid Product product, BindingResult result) {
+        if (result.hasErrors()) {
+            return currentPath;
+        }
         productRepository.save(product);
         return "redirect:/product";
     }

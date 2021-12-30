@@ -1,11 +1,15 @@
 package ru.geekbrains.persist;
 
+import org.springframework.lang.NonNull;
+
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 
 public class Product {
 
     private Long id;
 
+    @NotBlank
     private String name;
 
     private String description;

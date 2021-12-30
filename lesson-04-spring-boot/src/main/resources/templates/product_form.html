@@ -40,6 +40,7 @@
                 <div class="form-group">
                     <label>Name</label>
                     <input th:field="*{name}" type="text" class="form-control" id="name" name="productname" placeholder="Enter product name">
+                    <p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
                     <label>Price</label>
                     <input th:field="*{price}" type="text" class="form-control" id="price" name="productprice" placeholder="Enter product price">
                     <label>Description</label>
