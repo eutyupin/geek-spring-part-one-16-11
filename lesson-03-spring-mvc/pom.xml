@@ -68,6 +68,7 @@
                 <version>2.2</version>
                 <configuration>
                     <url>http://80.78.254.253:8080/manager/text</url>
+<!--                    <url>http://localhost:8080/manager/text</url>-->
                     <path>/mvc-app</path>
                 </configuration>
             </plugin>

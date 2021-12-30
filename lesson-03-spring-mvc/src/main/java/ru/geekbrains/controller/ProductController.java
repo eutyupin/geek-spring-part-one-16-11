@@ -33,9 +33,9 @@ public class ProductController {
     }
 
     @GetMapping("/new")
-    public String create(Product product, Model model) {
-        model.addAttribute("product", product);
-        return "new_product_form";
+    public String create(Model model) {
+        model.addAttribute("product", new Product());
+        return "product_form";
     }
 
     @PostMapping
