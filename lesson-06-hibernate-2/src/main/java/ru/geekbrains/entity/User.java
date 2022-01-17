@@ -30,6 +30,13 @@ public class User {
             orphanRemoval = true)
     private List<Contact> contacts;
 
+    @OneToMany (
+            mappedBy = "user",
+            cascade ={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},
+            orphanRemoval = true
+    )
+    private List<Order> orders;
+
     public User() {
     }
 

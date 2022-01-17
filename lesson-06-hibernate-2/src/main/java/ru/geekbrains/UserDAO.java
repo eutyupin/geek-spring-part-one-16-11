@@ -9,18 +9,18 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public class UserRepositoryImpl implements UserRepository {
+public class UserDAO implements UserRepository {
 
     private final EntityManagerFactory emFactory;
 
-    public UserRepositoryImpl(EntityManagerFactory emFactory) {
+    public UserDAO(EntityManagerFactory emFactory) {
         this.emFactory = emFactory;
     }
 
     @Override
     public List<User> findAll() {
         return executeForEntityManager(
-                em -> em.createQuery("from User u", User.class)
+                em -> em.createQuery("select u from User u", User.class)
                         .getResultList()
         );
     }
