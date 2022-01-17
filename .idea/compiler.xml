@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="lesson-01-servlet-api" />
         <module name="lesson-05-hibernate" />
+        <module name="lesson-06-hibernate-2" />
         <module name="lesson-03-spring-mvc" />
         <module name="lesson-04-spring-boot" />
         <module name="lesson-02-spring-basics" />
