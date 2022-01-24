@@ -10,6 +10,7 @@
         <module name="lesson-05-hibernate" />
         <module name="lesson-06-hibernate-2" />
         <module name="lesson-03-spring-mvc" />
+        <module name="lesson-07-data" />
         <module name="lesson-04-spring-boot" />
         <module name="lesson-02-spring-basics" />
       </profile>
@@ -18,6 +19,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="lesson-04-spring-boot" options="-parameters" />
+      <module name="lesson-07-data" options="-parameters" />
     </option>
   </component>
 </project>
