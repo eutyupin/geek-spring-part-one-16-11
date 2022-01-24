@@ -14,7 +14,6 @@ import ru.geekbrains.persist.ProductRepository;
 import ru.geekbrains.persist.ProductSpecification;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
