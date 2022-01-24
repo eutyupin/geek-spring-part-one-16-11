@@ -12,11 +12,11 @@ public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpec
 
     List<Product> findAllByNameLike(String pattern);
 
-    @Query("select p " +
-            "from Product p " +
-            "where (p.name like :pattern or :pattern is null) and " +
-            " (p.price >= :minPrice or :minPrice is null)") // TODO
-    List<Product> findByFilter(@Param("pattern") String pattern,
-                               @Param("minPrice") BigDecimal minPrice,
-                               @Param("maxPrice") BigDecimal maxPrice);
+//    @Query("select p " +
+//            "from Product p " +
+//            "where (p.name like :pattern or :pattern is null) and " +
+//            " (p.price >= :minPrice or :minPrice is null)")
+//    List<Product> findByFilter(@Param("pattern") String pattern,
+//                               @Param("minPrice") BigDecimal minPrice,
+//                               @Param("maxPrice") BigDecimal maxPrice);
 }

@@ -13,6 +13,7 @@ import ru.geekbrains.persist.Product;
 import ru.geekbrains.persist.ProductRepository;
 import ru.geekbrains.persist.ProductSpecification;
 
+import javax.persistence.EntityManager;
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -74,6 +75,13 @@ public class ProductController {
     }
 
     // TODO добавить удаление продукта
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id, Model model) {
+        productRepository.delete(productRepository.findById(id).get());
+        return "redirect:/product";
+    }
+
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
