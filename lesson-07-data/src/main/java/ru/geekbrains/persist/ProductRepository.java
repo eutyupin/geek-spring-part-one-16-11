@@ -11,12 +11,6 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product> {
 
     List<Product> findAllByNameLike(String pattern);
-
-//    @Query("select p " +
-//            "from Product p " +
-//            "where (p.name like :pattern or :pattern is null) and " +
-//            " (p.price >= :minPrice or :minPrice is null)")
-//    List<Product> findByFilter(@Param("pattern") String pattern,
-//                               @Param("minPrice") BigDecimal minPrice,
-//                               @Param("maxPrice") BigDecimal maxPrice);
+    List<Product> findAllById(long id);
+    List<Product> findAllByNameLikeAndId(String name, long id);
 }

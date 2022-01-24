@@ -14,5 +14,8 @@ public final class ProductSpecification {
         return (root, query, builder) -> builder.ge(root.get("price"), minPrice);
     }
 
+    public static Specification<Product> idFilter(long id) {
+        return (root, query, builder) -> builder.ge(root.get("id"), id);
+    }
     // TODO
 }
