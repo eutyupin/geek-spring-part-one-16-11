@@ -40,12 +40,13 @@ public class ProductController {
                            @RequestParam("sort") Optional<String> sort) {
         logger.info("Product filter with name pattern {}", nameFilter.orElse(null));
 
-        model.addAttribute("products", productService.findAll(
-                nameFilter,
-                page.orElse(1) - 1,
-                size.orElse(5),
-                sort.orElse("id")
-        ));
+            model.addAttribute("products", productService.findAll(
+                    nameFilter,
+                    page.orElse(1) - 1,
+                    size.orElse(5),
+                    sort.orElse("id")
+            ));
+
         return "product";
     }
 
