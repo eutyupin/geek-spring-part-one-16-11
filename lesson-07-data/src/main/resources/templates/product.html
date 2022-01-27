@@ -16,7 +16,7 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">EShop</a>
+    <a class="navbar-brand" th:href="@{/product}">EShop</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">List</a>
+                <a class="nav-link" th:href="@{/product}">List</a>
             </li>
         </ul>
     </div>
@@ -43,8 +43,11 @@
                 <label for="name-filter" class="sr-only">Name filter:</label>
                 <input th:value="${param.nameFilter}" type="text" class="form-control"
                        name="nameFilter" id="name-filter" placeholder="Name filter">
+                <input th:value="${param.idFilter}" type="text" class="form-control"
+                       name="idFilter" id="id-filter" placeholder="ID filter">
             </div>
-            <button type="submit" class="btn btn-primary mb-2">Apply</button>
+            <button type="submit" class="btn btn-primary mb-2" style="margin:10px">Apply</button>
+            <a class="btn btn-danger" th:href="@{/product?nameFilter=&idFilter=}">Reset Filter <i class="far fa-trash-alt"></i></a>
         </form>
 
         <div class="col-12">
@@ -67,7 +70,7 @@
                     <td>
                         <a class="btn btn-success" th:href="@{/product/{id}(id = ${product.id})}"><i class="fas fa-edit"></i></a>
                         <!-- TODO Добавить удаление продукта -->
-                        <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
+                        <a class="btn btn-danger" th:href="@{/product/delete/{id}(id = ${product.id})}"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 </tbody>

@@ -3,7 +3,6 @@ package ru.geekbrains.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +10,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.persist.Product;
 import ru.geekbrains.persist.ProductRepository;
-import ru.geekbrains.persist.ProductSpecification;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -31,23 +30,29 @@ public class ProductController {
 
     @GetMapping
     public String listPage(Model model,
-                           @RequestParam("nameFilter") Optional<String> nameFilter) {
+                           @RequestParam("nameFilter") Optional<String> nameFilter,
+                           @RequestParam("idFilter") Optional<String> idFilter) {
         logger.info("Product filter with name pattern {}", nameFilter.orElse(null));
 
-        Specification<Product> spec = Specification.where(null);
-        if (nameFilter.isPresent() && !nameFilter.get().isBlank()) {
-            spec.and(ProductSpecification.nameLike(nameFilter.get()));
-        }
         // TODO
 
-//        List<Product> products;
-//        if (nameFilter.isPresent() && !nameFilter.get().isBlank()) {
-//            products = productRepository.findAllByNameLike("%" + nameFilter.get() + "%");
-//        } else {
-//            products = productRepository.findAll();
-//        }
-
-        model.addAttribute("products", productRepository.findAll(spec));
+        List<Product> products = null;
+        if (nameFilter.isPresent() && !nameFilter.get().isBlank()) {
+            products = productRepository.findAllByNameLike("%" + nameFilter.get() + "%");
+        }
+        if(idFilter.isPresent() && !idFilter.get().isBlank()) {
+                products = productRepository.findAllById(Long.parseLong(idFilter.get()));
+            }
+        if (nameFilter.isPresent() && idFilter.isPresent() &&
+                !nameFilter.get().isBlank() && !idFilter.get().isBlank()) {
+            products = productRepository.findAllByNameLikeAndId(nameFilter.get(), Long.parseLong(idFilter.get()));
+        }
+        if ((!nameFilter.isPresent() && !idFilter.isPresent()) ||
+                (nameFilter.isPresent() && idFilter.isPresent() &&
+                        nameFilter.get().isBlank() && idFilter.get().isBlank())) {
+            products = productRepository.findAll();
+        }
+        model.addAttribute("products", products);
         return "product";
     }
 
@@ -74,6 +79,13 @@ public class ProductController {
     }
 
     // TODO добавить удаление продукта
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id, Model model) {
+        productRepository.delete(productRepository.findById(id).get());
+        return "redirect:/product";
+    }
+
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.NOT_FOUND)
