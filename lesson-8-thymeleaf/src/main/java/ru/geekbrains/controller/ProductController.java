@@ -46,7 +46,6 @@ public class ProductController {
                     size.orElse(5),
                     sort.orElse("id")
             ));
-
         return "product";
     }
 
