@@ -1,0 +1,28 @@
+GET http://localhost:8080/mvc-app/api/v1/product/category
+
+###
+
+GET http://localhost:8080/mvc-app/api/v1/product/category/3
+
+###
+
+POST http://localhost:8080/mvc-app/api/v1/product/category
+Content-Type: application/json
+
+{
+  "name": "Food"
+}
+
+###
+
+PUT http://localhost:8080/mvc-app/api/v1/product/category
+Content-Type: application/json
+
+{
+  "id": 6,
+  "name": "some new category"
+}
+
+###
+
+DELETE http://localhost:8080/mvc-app/api/v1/product/category/6
