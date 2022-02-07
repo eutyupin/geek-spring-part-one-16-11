@@ -13,7 +13,7 @@
 
 <div class="container">
     <div class="row py-2">
-        <div class="col-12" sec:authorize="hasAnyRole('ADMIN')">
+        <div class="col-12" sec:authorize="hasAnyRole('ADMIN', 'MANAGER')">
             <a class="btn btn-primary" th:href="@{/product/new}">Add Product</a>
         </div>
 
@@ -46,7 +46,7 @@
                     <td th:text="${product.description}">Alex</td>
                     <td th:text="${product.categoryName}">Category</td>
                     <td th:text="${product.price}">Alex</td>
-                    <td sec:authorize="hasAnyRole('ADMIN')">
+                    <td sec:authorize="hasAnyRole('ADMIN', 'MANAGER')">
                         <a class="btn btn-success" th:href="@{/product/{id}(id = ${product.id})}"><i class="fas fa-edit"></i></a>
                         <form class="d-inline" th:method="delete" th:action="@{/product/{id}(id = ${product.id})}">
                             <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>

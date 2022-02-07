@@ -17,17 +17,17 @@ public class SecurityConfiguration {
                            UserDetailsService userDetailsService,
                            PasswordEncoder encoder) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("mem_user")
-                .password(encoder.encode("password"))
+                .withUser("superadmin")
+                .password(encoder.encode("superadmin"))
                 .roles("SUPER_ADMIN")
                 .and()
                 .withUser("admin")
                 .password(encoder.encode("admin"))
                 .roles("ADMIN")
                 .and()
-                .withUser("guest")
-                .password(encoder.encode("guest"))
-                .roles("GUEST");
+                .withUser("manager")
+                .password(encoder.encode("manager"))
+                .roles("MANAGER");
 
         auth.userDetailsService(userDetailsService);
     }
