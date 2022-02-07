@@ -46,7 +46,7 @@
                     <td th:text="${product.description}">Alex</td>
                     <td th:text="${product.categoryName}">Category</td>
                     <td th:text="${product.price}">Alex</td>
-                    <td>
+                    <td sec:authorize="hasAnyRole('ADMIN')">
                         <a class="btn btn-success" th:href="@{/product/{id}(id = ${product.id})}"><i class="fas fa-edit"></i></a>
                         <form class="d-inline" th:method="delete" th:action="@{/product/{id}(id = ${product.id})}">
                             <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>

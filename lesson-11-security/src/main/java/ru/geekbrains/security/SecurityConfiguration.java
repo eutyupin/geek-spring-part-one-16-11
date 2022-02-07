@@ -21,8 +21,12 @@ public class SecurityConfiguration {
                 .password(encoder.encode("password"))
                 .roles("SUPER_ADMIN")
                 .and()
+                .withUser("admin")
+                .password(encoder.encode("admin"))
+                .roles("ADMIN")
+                .and()
                 .withUser("guest")
-                .password(encoder.encode("password"))
+                .password(encoder.encode("guest"))
                 .roles("GUEST");
 
         auth.userDetailsService(userDetailsService);
@@ -37,7 +41,7 @@ public class SecurityConfiguration {
                     .authorizeRequests()
                     .antMatchers("/**/*.css", "/**/*.js").permitAll()
                     .antMatchers("/product/**").permitAll()
-                    .antMatchers("/user/**").hasAnyRole("SUPER_ADMIN")
+                    .antMatchers("/user/**").hasAnyRole("SUPER_ADMIN", "ADMIN")
                     .and()
                     .formLogin()
                     //.loginPage("/login")
