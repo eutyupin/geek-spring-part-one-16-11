@@ -25,6 +25,7 @@
         <module>lesson-07-data</module>
         <module>lesson-8-thymeleaf</module>
         <module>lesson-09-REST1</module>
+        <module>lesson-11-security</module>
     </modules>
 
 </project>

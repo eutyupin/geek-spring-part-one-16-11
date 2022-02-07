@@ -15,6 +15,7 @@
         <module name="lesson-09-REST1" />
         <module name="lesson-04-spring-boot" />
         <module name="lesson-02-spring-basics" />
+        <module name="lesson-11-security" />
       </profile>
     </annotationProcessing>
   </component>
@@ -23,6 +24,7 @@
       <module name="lesson-04-spring-boot" options="-parameters" />
       <module name="lesson-07-data" options="-parameters" />
       <module name="lesson-09-REST1" options="-parameters" />
+      <module name="lesson-11-security" options="-parameters" />
       <module name="lesson-8-thymeleaf" options="-parameters" />
     </option>
   </component>
